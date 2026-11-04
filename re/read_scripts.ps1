@@ -1,0 +1,1 @@
+﻿=[System.IO.File]::ReadAllText(" C:\Users\xd\Documents\GitHub\Z4LOEnhanced\re\preload-render.js\); =818200; =.Length; Write-Host \Start: End: Len: 0 \; for(=; -lt ;+=5000){ =.Substring(,[Math]::Min(5000,-)); Write-Host \--- Offset  ---\; Write-Host }
