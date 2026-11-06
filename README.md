@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Z4LO-Enhanced
 
 Z4LO-Enhanced is a Windows desktop application built with C++ and Dear ImGui.
@@ -102,3 +103,6 @@ surrounding files.
 
 Maintainer: vuduykhoaxd
 Repository: https://github.com/vuduykhoaxd/Z4LO-Enhanced
+=======
+# Z4LO Enhanced
+>>>>>>> f782e7d07441ec0ed8ca72eabe1791a8c8c7eb1a
