@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Z4LO-Enhanced
 
 Z4LO-Enhanced is a Windows desktop application built with C++ and Dear ImGui.
