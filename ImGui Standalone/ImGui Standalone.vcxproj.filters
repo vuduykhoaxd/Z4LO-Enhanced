@@ -21,72 +21,126 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui.cpp">
+    <ClCompile Include="UI\ImGui\imgui.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_demo.cpp">
+    <ClCompile Include="UI\ImGui\imgui_demo.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_draw.cpp">
+    <ClCompile Include="UI\ImGui\imgui_draw.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_tables.cpp">
+    <ClCompile Include="UI\ImGui\imgui_tables.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_widgets.cpp">
+    <ClCompile Include="UI\ImGui\imgui_widgets.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="UI.cpp">
+    <ClCompile Include="UI\UI.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Drawing.cpp">
+    <ClCompile Include="UI\Drawing.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_impl_dx11.cpp">
+    <ClCompile Include="UI\ImGui\imgui_impl_dx11.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="ImGui\imgui_impl_win32.cpp">
+    <ClCompile Include="UI\ImGui\imgui_impl_win32.cpp">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClCompile>
-    <ClCompile Include="Zalo_Utils.hpp">
+    <ClCompile Include="Utils\Zalo_Utils.hpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Widgets.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Tabs\PrivacyTab.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Tabs\ThemeTab.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Tabs\StickerTab.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Tabs\MiscTab.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\Tabs\DebugTab.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImGui\imconfig.h">
+    <ClInclude Include="UI\ImGui\imconfig.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imgui.h">
+    <ClInclude Include="UI\ImGui\imgui.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imgui_internal.h">
+    <ClInclude Include="UI\ImGui\imgui_internal.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imstb_rectpack.h">
+    <ClInclude Include="UI\ImGui\imstb_rectpack.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imstb_textedit.h">
+    <ClInclude Include="UI\ImGui\imstb_textedit.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imstb_truetype.h">
+    <ClInclude Include="UI\ImGui\imstb_truetype.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
+    <ClInclude Include="UI\UI.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Drawing.h">
+    <ClInclude Include="UI\Drawing.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imgui_impl_dx11.h">
+    <ClInclude Include="UI\ImGui\imgui_impl_dx11.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGui\imgui_impl_win32.h">
+    <ClInclude Include="UI\ImGui\imgui_impl_win32.h">
       <Filter>Fichiers d%27en-tête\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="Command\JavaScript.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="JavaScript.h">
+    <ClInclude Include="Utils\Utils.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\ExecuteJS.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Widgets.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Tabs\PrivacyTab.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Tabs\ThemeTab.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Tabs\StickerTab.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Tabs\MiscTab.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\Tabs\DebugTab.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\FileDialog.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Http.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Actions.hpp">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Command\ThemeCss.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="Command\Sticker.hpp">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>

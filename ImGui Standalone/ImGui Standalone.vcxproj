@@ -144,31 +144,49 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Drawing.cpp" />
-    <ClCompile Include="ImGui\imgui.cpp" />
-    <ClCompile Include="ImGui\imgui_demo.cpp" />
-    <ClCompile Include="ImGui\imgui_draw.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="ImGui\imgui_impl_win32.cpp" />
-    <ClCompile Include="ImGui\imgui_tables.cpp" />
-    <ClCompile Include="ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="UI\Drawing.cpp" />
+    <ClCompile Include="UI\Widgets.cpp" />
+    <ClCompile Include="UI\Tabs\PrivacyTab.cpp" />
+    <ClCompile Include="UI\Tabs\ThemeTab.cpp" />
+    <ClCompile Include="UI\Tabs\StickerTab.cpp" />
+    <ClCompile Include="UI\Tabs\MiscTab.cpp" />
+    <ClCompile Include="UI\Tabs\DebugTab.cpp" />
+    <ClCompile Include="UI\ImGui\imgui.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="UI\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="UI.cpp" />
-    <ClCompile Include="Zalo_Utils.hpp" />
+    <ClCompile Include="UI\UI.cpp" />
+    <ClCompile Include="Utils\Zalo_Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Drawing.h" />
-    <ClInclude Include="ImGui\imconfig.h" />
-    <ClInclude Include="ImGui\imgui.h" />
-    <ClInclude Include="ImGui\imgui_impl_dx11.h" />
-    <ClInclude Include="ImGui\imgui_impl_win32.h" />
-    <ClInclude Include="ImGui\imgui_internal.h" />
-    <ClInclude Include="ImGui\imstb_rectpack.h" />
-    <ClInclude Include="ImGui\imstb_textedit.h" />
-    <ClInclude Include="ImGui\imstb_truetype.h" />
-    <ClInclude Include="JavaScript.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="UI.h" />
+    <ClInclude Include="Command\Sticker.hpp" />
+    <ClInclude Include="Command\ThemeCss.h" />
+    <ClInclude Include="Core\Actions.hpp" />
+    <ClInclude Include="Core\ExecuteJS.hpp" />
+    <ClInclude Include="UI\Drawing.h" />
+    <ClInclude Include="UI\Widgets.h" />
+    <ClInclude Include="UI\Tabs\PrivacyTab.h" />
+    <ClInclude Include="UI\Tabs\ThemeTab.h" />
+    <ClInclude Include="UI\Tabs\StickerTab.h" />
+    <ClInclude Include="UI\Tabs\MiscTab.h" />
+    <ClInclude Include="UI\Tabs\DebugTab.h" />
+    <ClInclude Include="UI\ImGui\imconfig.h" />
+    <ClInclude Include="UI\ImGui\imgui.h" />
+    <ClInclude Include="UI\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="UI\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="UI\ImGui\imgui_internal.h" />
+    <ClInclude Include="UI\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="UI\ImGui\imstb_textedit.h" />
+    <ClInclude Include="UI\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Command\JavaScript.h" />
+    <ClInclude Include="UI\UI.h" />
+    <ClInclude Include="Utils\FileDialog.hpp" />
+    <ClInclude Include="Utils\Http.hpp" />
+    <ClInclude Include="Utils\Utils.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

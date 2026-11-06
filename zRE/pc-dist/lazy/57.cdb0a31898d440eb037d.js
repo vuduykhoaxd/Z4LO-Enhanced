@@ -1,0 +1,2 @@
+(this.webpackJsonp=this.webpackJsonp||[]).push([[57],{"8gff":function(t,e,n){"use strict";n.r(e),n.d(e,"getTimePlatform",(function(){return r}));var i=n("bUXd");function r(){return i.default.getTimeNow()}}}]);
+//# sourceMappingURL=../sourcemaps/lazy/57.cdb0a31898d440eb037d.js.map

@@ -156,7 +156,16 @@ void UI::Render()
     ImGui_ImplWin32_EnableDpiAwareness();
     const WNDCLASSEX wc = { sizeof(WNDCLASSEX), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(nullptr), nullptr, nullptr, nullptr, nullptr, _T("Zalo Enhanced"), nullptr };
     ::RegisterClassEx(&wc);
+    // Same HWND creation as the original ImGui Standalone template:
+    // a small overlapped host window is created hidden (SW_HIDE). With
+    // ImGuiConfigFlags_ViewportsEnable (below) the visible window is the
+    // ImGui window detached into its own viewport OS window, not this host.
     const HWND hwnd = ::CreateWindow(wc.lpszClassName, _T("Zalo Enhanced"), WS_OVERLAPPEDWINDOW, 100, 100, 50, 50, NULL, NULL, wc.hInstance, NULL);
+
+    // Keep the hidden host available for modal dialogs / owner windows.
+    // Note: header-drag code in Drawing moves this host; with the hidden
+    // host the visible viewport window is moved by the OS instead.
+    Drawing::AttachHwnd(hwnd);
 
     if (!CreateDeviceD3D(hwnd))
     {
@@ -179,7 +188,7 @@ void UI::Render()
     ImGuiStyle& style = ImGui::GetStyle();
     if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
     {
-        style.WindowRounding = 0.0f;
+        style.WindowRounding = 4.0f;
         style.Colors[ImGuiCol_WindowBg].w = 1.0f;
     }
 
@@ -202,11 +211,9 @@ void UI::Render()
     ImGui_ImplWin32_Init(hwnd);
     ImGui_ImplDX11_Init(pd3dDevice, pd3dDeviceContext);
 
-    const ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-
     bool bDone = false;
 
-    while (!bDone)
+    while (!bDone && Drawing::isActive())
     {
         MSG msg;
         while (::PeekMessage(&msg, nullptr, 0U, 0U, PM_REMOVE))
@@ -232,6 +239,7 @@ void UI::Render()
         ImGui::EndFrame();
 
         ImGui::Render();
+        const ImVec4 clear_color = Drawing::colWindowBg;
         const float clear_color_with_alpha[4] = { clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w };
         pd3dDeviceContext->OMSetRenderTargets(1, &pMainRenderTargetView, nullptr);
         pd3dDeviceContext->ClearRenderTargetView(pMainRenderTargetView, clear_color_with_alpha);
