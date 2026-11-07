@@ -1,43 +1,48 @@
-# Cấu trúc source — Zalo Enhanced (ImGui standalone, D3D11)
+# Zalo Enhanced — Source Structure (Standalone ImGui, D3D11)
 
-Cửa sổ hiển thị là cửa sổ ImGui không khung (borderless, không tiêu đề Win32).
-D3D11 vẫn cần một HWND nội bộ để tạo swapchain, nhưng HWND đó không hiện khung
-`WS_POPUP` — người dùng chỉ thấy cửa sổ ImGui, kéo bằng vùng header, đóng bằng nút X.
+The application uses a frameless, standalone ImGui window with no native Win32 title bar or borders.
 
-```
+D3D11 requires an internal HWND for swapchain creation, configured with `WS_POPUP`. Users only see the ImGui interface, with window dragging handled by the header and closing via the X button.
+
+```text
 ImGui Standalone/
-  main.cpp                  Entry: CoInitializeEx → UI::Render()
+  main.cpp                  Entry point: CoInitializeEx → UI::Render()
   UI/
-    UI.h / UI.cpp           D3D11 host: tạo HWND ẩn khung, swapchain, vòng loop ImGui+D3D11, font Segoe UI (tiếng Việt)
-    Drawing.h / Drawing.cpp Shell: state dùng chung, i18n T(), preset/theme style, sidebar, header, body routing
-    Widgets.h / Widgets.cpp Widgets dùng chung: card, row, toggle, nav, logo, status, preset
-    Tabs/                   Mỗi tab 1 file, sửa chức năng chỉ mở đúng file của nó
-      PrivacyTab.h/.cpp     Privacy: 7 blur + Enable/Disable all
-      ThemeTab.h/.cpp       Theme: preset UI + card Apply to Zalo
-      StickerTab.h/.cpp     Sticker: convert WebP + thư viện + Enable/Remove
-      MiscTab.h/.cpp        Misc: Fetch live config → search → [Tên] ([Giá trị]/[Toggle]) [Apply]
-      DebugTab.h/.cpp       Debug: Force stop / Open 9222 / Disable touch / Test CDP
-    ImGui/                  Thư viện ImGui (imgui + impl_dx11 + impl_win32)
+    UI.h / UI.cpp           D3D11 host, frameless HWND, swapchain, ImGui loop, Vietnamese fonts
+    Drawing.h / Drawing.cpp Shared UI state, i18n, themes, sidebar, header, body routing
+    Widgets.h / Widgets.cpp Reusable components: cards, rows, toggles, navigation, logo, status
+    Tabs/
+      PrivacyTab.h/.cpp     Privacy: 7 blur options, Enable/Disable All
+      ThemeTab.h/.cpp       Theme presets, Apply to Zalo
+      StickerTab.h/.cpp     WebP conversion, sticker library, Enable/Remove
+      MiscTab.h/.cpp        Fetch live config, search, display values/toggles, Apply
+      DebugTab.h/.cpp       Force Stop, Open 9222, Disable Touch, Test CDP
+    ImGui/                  ImGui library and Win32/DX11 backends
   Command/
-    JavaScript.h            JS payload: BLUR_API, THEME_API, CUSTOM_STICKER, MISC_FETCH/SET
-    ThemeCss.h              Liquid Glass CSS
-    Sticker.hpp             Engine WIC: ảnh → sticker WebP (PNG+WebP)
+    JavaScript.h            JS payloads: BLUR_API, THEME_API, CUSTOM_STICKER, MISC_FETCH/SET
+    ThemeCss.h               Liquid Glass CSS
+    Sticker.hpp              WIC-based image-to-WebP engine (PNG + WebP)
   Core/
-    ExecuteJS.hpp           CDP: ExecuteJavaScript / EvaluateJavaScript
-    Actions.hpp             Adapter từng tab gọi CDP/thư viện: ApplyBlurState, ApplyTheme, EnableSticker, Fetch/SetMisc, ...
+    ExecuteJS.hpp            CDP: ExecuteJavaScript / EvaluateJavaScript
+    Actions.hpp              Feature adapters: ApplyBlurState, ApplyTheme, EnableSticker, Fetch/SetMisc
   Utils/
-    Zalo_Utils.hpp          FindZaloPath / IsZaloRunning / ForceStop / OpenDebugging (9222)
-    Http.hpp                HttpGetUrl / Read-Write file / Base64 / JsonEscape
-    FileDialog.hpp          Hộp thoại chọn file Win32
-    Utils.hpp               Wide/UTF-8, Trim, ToLower
+    Zalo_Utils.hpp           FindZaloPath, IsZaloRunning, ForceStop, OpenDebugging (9222)
+    Http.hpp                 HTTP, file I/O, Base64, JsonEscape
+    FileDialog.hpp            Native Win32 file picker
+    Utils.hpp                 Wide/UTF-8, Trim, ToLower
 ```
 
-## Quy tắc sửa
+## Development Rules
 
-- Sửa riêng 1 tab → chỉ mở file trong `UI/Tabs/` của tab đó.
-- Widgets dùng chung sửa ở `UI/Widgets.*`, không copy vào từng tab.
-- Hành động gọi vào Zalo/CDP sửa ở `Core/Actions.hpp`, payload JS sửa ở `Command/JavaScript.h`.
-- State của tab đặt trong file `.cpp` của tab đó (anonymous namespace), không gom vào `Drawing.*`.
-- Không thêm hàm không-`inline` vào header được nhiều file include (sẽ lỗi LNK2005 khi link) — header dùng `inline` hoặc để vào `.cpp`.
+- **Single-tab changes:** Only edit the corresponding files in `UI/Tabs/`.
+- **Shared widgets:** Modify `UI/Widgets.*`; never duplicate widgets across tabs.
+- **Zalo/CDP actions:** Modify `Core/Actions.hpp`.
+- **JavaScript payloads:** Modify `Command/JavaScript.h`.
+- **Tab state:** Keep state inside each tab's `.cpp` using an anonymous namespace. Do not move it into `Drawing.*`.
+- **Header safety:** Never define non-`inline` functions in headers included by multiple translation units. Use `inline` or move implementations into `.cpp` files.
 
-Build: `MSBuild ImGui Standalone.sln /p:Configuration=Release /p:Platform=x64`
+## Build
+
+```bash
+MSBuild "ImGui Standalone.sln" /p:Configuration=Release /p:Platform=x64
+```
